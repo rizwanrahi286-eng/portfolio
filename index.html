@@ -953,6 +953,36 @@ header{
 
 }
 
+
+
+.footer-logo{
+
+    display:flex;
+
+    align-items:center;
+    
+
+    gap:20px;
+    /* flex-direction:row; */
+
+}
+
+.footer-logo img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    background:white;
+
+    padding:2px;
+
+}
+
 .footer-logo h2{
 
     font-size:30px;
@@ -1084,6 +1114,274 @@ header{
     color:#012A4A;
 
 }
+
+/* =====================================================
+   RESPONSIVE DESIGN - Desktop | Laptop | Tablet | Mobile
+===================================================== */
+
+/* Global */
+
+html{
+    scroll-behavior:smooth;
+}
+
+html,
+body{
+    overflow-x:hidden;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+/* Responsive Typography */
+
+h1{
+    font-size:clamp(2rem,5vw,4rem);
+}
+
+h2{
+    font-size:clamp(1.5rem,4vw,3rem);
+}
+
+p{
+    font-size:clamp(1rem,2vw,1.1rem);
+    line-height:1.8;
+}
+
+/* Container */
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+/* Buttons */
+
+button,
+.btn,
+.btn-primary,
+.btn-secondary,
+.about-btn,
+.hire-btn{
+    max-width:100%;
+}
+
+/* Images */
+
+/* HOME IMAGE */
+
+.home-image img{
+    width:380px;
+    height:380px;
+    max-width:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+/* ABOUT IMAGE */
+
+.about-image img{
+    width:360px;
+    height:450px;
+    max-width:100%;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+/* Projects */
+
+.projects-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:25px;
+}
+
+/* Hamburger */
+
+.menu-toggle{
+    display:none;
+    font-size:30px;
+    color:white;
+    cursor:pointer;
+}
+
+/* ===========================
+        Tablet
+=========================== */
+
+@media (max-width:992px){
+
+header{
+    padding:18px 5%;
+}
+
+.home-container,
+.about-container,
+.contact-container{
+    flex-direction:column;
+    text-align:center;
+    gap:40px;
+}
+
+.home-buttons,
+.social-icons{
+    justify-content:center;
+}
+
+.about-info{
+    grid-template-columns:1fr;
+}
+
+.home-content p{
+    max-width:100%;
+}
+
+.section-title{
+    font-size:36px;
+}
+
+}
+
+/* ===========================
+        Mobile
+=========================== */
+
+@media (max-width:768px){
+
+header{
+    flex-direction:row;
+    justify-content:space-between;
+    padding:15px 20px;
+}
+
+.menu-toggle{
+    display:block;
+}
+
+.navbar{
+    display:none;
+    position:absolute;
+    top:75px;
+    left:0;
+    width:100%;
+    background:#012A4A;
+    padding:20px 0;
+}
+
+.navbar.active{
+    display:block;
+}
+
+.navbar ul{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+    align-items:center;
+}
+
+.hire-btn{
+    display:none;
+}
+
+.home,
+.about,
+.skills,
+.projects,
+.contact,
+.footer{
+    padding:60px 20px;
+}
+
+.home-container{
+    flex-direction:column-reverse;
+}
+
+.home-image img{
+    max-width:280px;
+}
+
+.about-image img{
+    max-width:280px;
+}
+
+.project-buttons{
+    flex-direction:column;
+}
+
+.contact-container{
+    flex-direction:column;
+    padding:30px;
+}
+
+.footer-container,
+.footer-bottom{
+    flex-direction:column;
+    text-align:center;
+}
+
+}
+
+/* ===========================
+      Small Mobile
+=========================== */
+
+@media (max-width:480px){
+
+.logo h1{
+    font-size:22px;
+}
+
+.logo img{
+    width:42px;
+    height:42px;
+}
+
+.home-content h1{
+    font-size:34px;
+}
+
+.home-content h2{
+    font-size:22px;
+}
+
+.section-title{
+    font-size:30px;
+}
+
+.home-buttons{
+    flex-direction:column;
+}
+
+.btn-primary,
+.btn-secondary,
+.about-btn{
+    width:100%;
+    text-align:center;
+}
+
+.home-image img,
+.about-image img{
+    max-width:230px;
+}
+
+.contact-info h2{
+    font-size:30px;
+}
+
+.project-card{
+    width:100%;
+}
+
+}
+
+/* End Responsive */
    </style>
 </head>
 <body>
@@ -1095,6 +1393,12 @@ header{
         <img src="MRICON" alt="Logo">
 
         <h1>M.Rizwan</h1>
+
+    </div>
+
+    <div class="menu-toggle">
+
+    <i class="fas fa-bars"></i>
 
     </div>
 
@@ -1290,32 +1594,7 @@ header{
     </div>
 
 </section>
-    <script>
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-document.querySelector(".html").style.width="95%";
-
-document.querySelector(".css").style.width="90%";
-
-document.querySelector(".js").style.width="70%";
-
-document.querySelector(".responsive").style.width="85%";
-
-}
-
-});
-
-});
-
-observer.observe(document.querySelector(".skills"));
-
-</script>
-
+   
 <section class="projects" id="projects">
 
     <h2 class="section-title">My Projects</h2>
@@ -1454,10 +1733,13 @@ observer.observe(document.querySelector(".skills"));
 <footer class="footer">
 
     <div class="footer-container">
-
+        
         <div class="footer-logo">
-            <h2>M.Rizwan</h2>
-            <p>Front-End Developer</p>
+            <img src="MRICON" alt="Logo">
+            <div>
+                <h2>M.Rizwan</h2>
+                <p>Front-End Developer</p>
+            </div>
         </div>
 
         <div class="footer-links">
@@ -1503,5 +1785,47 @@ observer.observe(document.querySelector(".skills"));
     </div>
 
 </footer>
+
+ <script>
+
+const observer = new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+document.querySelector(".html").style.width="95%";
+
+document.querySelector(".css").style.width="90%";
+
+document.querySelector(".js").style.width="70%";
+
+document.querySelector(".responsive").style.width="85%";
+
+}
+
+});
+
+});
+
+observer.observe(document.querySelector(".skills"));
+
+const menuToggle = document.querySelector(".menu-toggle");
+const navbar = document.querySelector(".navbar");
+
+menuToggle.addEventListener("click", () => {
+    navbar.classList.toggle("active");
+});
+
+// Menu item پر click ہونے کے بعد menu بند ہو جائے
+
+document.querySelectorAll(".navbar a").forEach(link => {
+    link.addEventListener("click", () => {
+        navbar.classList.remove("active");
+    });
+});
+
+</script>
+
 </body>
 </html>
