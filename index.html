@@ -176,29 +176,59 @@ header{
 /* ===== Hire Me Button ===== */
 
 .hire-btn{
-
-    text-decoration:none;
-
-    background:#89C2D9;
-
-    color:#012A4A;
-
-    font-weight:bold;
-
-    padding:12px 28px;
-
-    border-radius:30px;
-
-    transition:.3s;
-
+  position: relative;
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  border-radius: 0.8em;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, #0a2e49, #10587c);
+  color: #ffffff;
+  overflow: hidden;
+  padding: 12px 28px;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(235, 237, 238, 0.404);
 }
 
-.hire-btn:hover{
+.hire-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px rgba(78, 106, 128, 0.25);
+}
 
-    background:white;
+.hire-btn::before {
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  content: "";
+  background: rgba(221, 223, 226, 0.651);
+  transform: skew(30deg);
+  transition: transform 0.9s cubic-bezier(0.3, 1, 0.8, 1);
+  z-index: 0;
+}
 
-    transform:translateY(-2px);
+.hire-btn:hover::before {
+  transform: translate3d(220%, 0, 0) skew(30deg);
+}
 
+.hire-btn::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(11, 38, 110, 0.856), transparent 60%);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.hire-btn {
+  color: #ffffff;
 }
 
 /* ===========================
@@ -1115,6 +1145,58 @@ header{
 
 }
 
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(180, 160, 255, 0.253);
+  cursor: pointer;
+  transition: width 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.svgIcon {
+  width: 12px;
+  transition: transform 0.3s ease;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  width: 140px;
+  border-radius: 50px;
+  background-color: rgb(181, 160, 255);
+}
+
+.button:hover .svgIcon {
+  transform: translateY(-200%);
+}
+
+.button::before {
+  position: absolute;
+  bottom: -20px;
+  content: "Back to Top";
+  color: white;
+  font-size: 0px;
+  white-space: nowrap;
+}
+
+.button:hover::before {
+  font-size: 13px;
+  opacity: 1;
+  bottom: 14px;
+  transition: font-size 0.3s ease, opacity 0.3s ease, bottom 0.3s ease;
+}
+
 /* =====================================================
    RESPONSIVE DESIGN - Desktop | Laptop | Tablet | Mobile
 ===================================================== */
@@ -1183,6 +1265,46 @@ button,
     max-width:100%;
     object-fit:cover;
     border-radius:50%;
+    border:5px solid transparent;
+    animation: border 3s linear infinite;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    /* box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+}
+@keyframes border {
+    0%{
+        border-top: 5px solid #89C2D9;
+        border-right: 5px solid #F4D35E;
+        border-bottom: 5px solid #012A4A;
+        border-left: 5px solid #D81159;
+    }
+
+    25%{
+        border-top: 5px solid #F4D35E;
+        border-right: 5px solid #012A4A;
+        border-bottom: 5px solid #D81159;
+        border-left: 5px solid #89C2D9;
+    }
+
+    50%{
+        border-top: 5px solid #012A4A;
+        border-right: 5px solid #D81159;
+        border-bottom: 5px solid #89C2D9;
+        border-left: 5px solid #F4D35E;
+    }
+
+    75%{
+        border-top: 5px solid #D81159;
+        border-right: 5px solid #89C2D9;
+        border-bottom: 5px solid #F4D35E;
+        border-left: 5px solid #012A4A;
+    }
+
+    100%{
+        border-top: 5px solid #89C2D9;
+        border-right: 5px solid #F4D35E;
+        border-bottom: 5px solid #012A4A;
+        border-left: 5px solid #D81159;
+    }
 }
 
 /* ABOUT IMAGE */
@@ -1384,297 +1506,138 @@ header{
 /* End Responsive */
 /* End Responsive */
 
-/* From Uiverse.io by anand_4957 */
-.loader{
+.page-loader {
     position: fixed;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(245,249,252,0.98);
-    z-index: 9999;
-    opacity: 9;
-    visibility: visible;
-    transition: opacity 15s ease, visibility 9s ease;
-}
-
-.loader span{
-    position: relative;
-    width: 250px;
-    height: 250px;
-    background-color: #2a2b2b;
-    border: 6px solid #eaeef0;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 1), 8px 8px 25px rgba(0, 0, 0, 0.15);
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-.loader span:before{
-    content: "LOADING";
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 900;
-    color: #dddcdc;
-    letter-spacing: 3px;
-    font-size: 23px;
-    position: absolute;
-    inset: 40px;
-    background-color: #eaeef0;
-    box-shadow: -8px -8px 25px rgba(255, 255, 255, 1), 8px 8px 25px rgba(0, 0, 0, 0.15), inset 3px 3px 10px rgba(0, 0, 0, 0.1), inset -1px -1px 15px rgba(255, 255, 255, 1);
-    border: 2px solid #eaeef0;
-    border-radius: 50%;
-    z-index: 1;
-}
-
-.loader span i{
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(#42abff, #ff4f8b, #ffeb4b);
-    border-radius: 50%;
-    filter: blur(5px);
-    animation: animate 1s linear infinite;
-}
-
-@keyframes animate{
-    0%{ transform: rotate(0deg); }
-    100%{ transform: rotate(360deg); }
-}
-
-.text{
-    position: absolute;
-    width: 279px;
-    height: 279px;
-    border-radius: 50%;
-    animation: animateText 9s linear infinite;
-}
-
-@keyframes animateText{
-    0%{ transform: rotate(360deg); }
-    100%{ transform: rotate(0deg); }
-}
-
-.ball{
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(#42abff, #ff4f8b, #ffeb4b);
-    border: 6px solid #dfdfdf;
-    border-radius: 50%;
-    box-shadow: -8px -8px 15px rgba(255, 255, 255, 1), 8px 8px 25px rgba(0, 0, 0, 0.15);
-    animation: rotate 3s infinite linear;
-}
-
-@keyframes rotate{
-    to{ transform: rotate(360deg); }
-}
-
-/* hide loader when hidden by script */
-.loader.fade-out{ opacity:0; visibility:hidden; pointer-events:none; }
-.loader.hidden{ display:none !important; }
-
-/* From Uiverse.io by Nawsome */
-.banter-loader {
-    position: relative;
-    width: 72px;
-    height: 72px;
-}
-
-.banter-loader__box {
-    float: left;
-    position: relative;
-    width: 20px;
-    height: 20px;
-    margin-right: 6px;
-}
-
-.banter-loader__box:before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
     background: #012A4A;
+    z-index: 9999;
+    transition: opacity 2s ease-in-out, visibility 5s ease-in-out;
 }
 
-.banter-loader__box:nth-child(3n) {
-    margin-right: 0;
-    margin-bottom: 6px;
+.page-loader.hidden {
+    opacity: 2;
+    visibility:collapse
 }
 
-.banter-loader__box:nth-child(1):before, .banter-loader__box:nth-child(4):before {
-    margin-left: 26px;
+.loader {
+    width: 112px;
+    height: 112px;
+    position: relative;
 }
 
-.banter-loader__box:nth-child(3):before {
-    margin-top: 52px;
+.box1,
+.box2,
+.box3 {
+    border: 16px solid #f5f5f5;
+    box-sizing: border-box;
+    position: absolute;
+    display: block;
 }
 
-.banter-loader__box:last-child {
-    margin-bottom: 0;
+.box1 {
+    width: 112px;
+    height: 48px;
+    margin-top: 64px;
+    margin-left: 0px;
+    animation: abox1 1s ease-in-out infinite;
 }
 
-@keyframes moveBox-1 {
-    9.0909090909% { transform: translate(-26px, 0); }
-    18.1818181818% { transform: translate(0px, 0); }
-    27.2727272727% { transform: translate(0px, 0); }
-    36.3636363636% { transform: translate(26px, 0); }
-    45.4545454545% { transform: translate(26px, 26px); }
-    54.5454545455% { transform: translate(26px, 26px); }
-    63.6363636364% { transform: translate(26px, 26px); }
-    72.7272727273% { transform: translate(26px, 0px); }
-    81.8181818182% { transform: translate(0px, 0); }
-    90.9090909091% { transform: translate(-26px, 0); }
-    100% { transform: translate(0px, 0); }
+.box2 {
+    width: 48px;
+    height: 48px;
+    margin-top: 0px;
+    margin-left: 0px;
+    animation: abox2 1s ease-in-out infinite;
 }
 
-.banter-loader__box:nth-child(1) { animation: moveBox-1 4s infinite; }
-
-@keyframes moveBox-2 {
-    9.0909090909% { transform: translate(0, 0); }
-    18.1818181818% { transform: translate(26px, 0); }
-    27.2727272727% { transform: translate(0px, 0); }
-    36.3636363636% { transform: translate(26px, 0); }
-    45.4545454545% { transform: translate(26px, 26px); }
-    54.5454545455% { transform: translate(26px, 26px); }
-    63.6363636364% { transform: translate(26px, 26px); }
-    72.7272727273% { transform: translate(26px, 26px); }
-    81.8181818182% { transform: translate(0px, 26px); }
-    90.9090909091% { transform: translate(0px, 26px); }
-    100% { transform: translate(0px, 0px); }
+.box3 {
+    width: 48px;
+    height: 48px;
+    margin-top: 0px;
+    margin-left: 64px;
+    animation: abox3 1s ease-in-out infinite;
 }
 
-.banter-loader__box:nth-child(2) { animation: moveBox-2 4s infinite; }
-
-@keyframes moveBox-3 {
-    9.0909090909% { transform: translate(-26px, 0); }
-    18.1818181818% { transform: translate(-26px, 0); }
-    27.2727272727% { transform: translate(0px, 0); }
-    36.3636363636% { transform: translate(-26px, 0); }
-    45.4545454545% { transform: translate(-26px, 0); }
-    54.5454545455% { transform: translate(-26px, 0); }
-    63.6363636364% { transform: translate(-26px, 0); }
-    72.7272727273% { transform: translate(-26px, 0); }
-    81.8181818182% { transform: translate(-26px, -26px); }
-    90.9090909091% { transform: translate(0px, -26px); }
-    100% { transform: translate(0px, 0px); }
+@keyframes abox1 {
+    0%, 12.5%, 25%, 37.5%, 50%, 62.5% {
+        width: 112px;
+        height: 48px;
+        margin-top: 64px;
+        margin-left: 0px;
+    }
+    75%, 87.5%, 100% {
+        width: 48px;
+        height: 48px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
 }
 
-.banter-loader__box:nth-child(3) { animation: moveBox-3 4s infinite; }
-
-@keyframes moveBox-4 {
-    9.0909090909% { transform: translate(-26px, 0); }
-    18.1818181818% { transform: translate(-26px, 0); }
-    27.2727272727% { transform: translate(-26px, -26px); }
-    36.3636363636% { transform: translate(0px, -26px); }
-    45.4545454545% { transform: translate(0px, 0px); }
-    54.5454545455% { transform: translate(0px, -26px); }
-    63.6363636364% { transform: translate(0px, -26px); }
-    72.7272727273% { transform: translate(0px, -26px); }
-    81.8181818182% { transform: translate(-26px, -26px); }
-    90.9090909091% { transform: translate(-26px, 0px); }
-    100% { transform: translate(0px, 0px); }
+@keyframes abox2 {
+    0%, 12.5%, 25%, 37.5% {
+        width: 48px;
+        height: 48px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    50% {
+        width: 112px;
+        height: 48px;
+        margin-top: 0px;
+        margin-left: 0px;
+    }
+    62.5%, 75%, 87.5%, 100% {
+        width: 48px;
+        height: 48px;
+        margin-top: 0px;
+        margin-left: 64px;
+    }
 }
 
-.banter-loader__box:nth-child(4) { animation: moveBox-4 4s infinite; }
-
-@keyframes moveBox-5 {
-    9.0909090909% { transform: translate(0, 0); }
-    18.1818181818% { transform: translate(0, 0); }
-    27.2727272727% { transform: translate(0, 0); }
-    36.3636363636% { transform: translate(26px, 0); }
-    45.4545454545% { transform: translate(26px, 0); }
-    54.5454545455% { transform: translate(26px, 0); }
-    63.6363636364% { transform: translate(26px, 0); }
-    72.7272727273% { transform: translate(26px, 0); }
-    81.8181818182% { transform: translate(26px, -26px); }
-    90.9090909091% { transform: translate(0px, -26px); }
-    100% { transform: translate(0px, 0px); }
+@keyframes abox3 {
+    0%, 12.5% {
+        width: 48px;
+        height: 48px;
+        margin-top: 0px;
+        margin-left: 64px;
+    }
+    25% {
+        width: 48px;
+        height: 112px;
+        margin-top: 0px;
+        margin-left: 64px;
+    }
+    37.5%, 50%, 62.5%, 75%, 87.5% {
+        width: 48px;
+        height: 48px;
+        margin-top: 64px;
+        margin-left: 64px;
+    }
+    100% {
+        width: 112px;
+        height: 48px;
+        margin-top: 64px;
+        margin-left: 0px;
+    }
 }
 
-.banter-loader__box:nth-child(5) { animation: moveBox-5 4s infinite; }
 
-@keyframes moveBox-6 {
-    9.0909090909% { transform: translate(0, 0); }
-    18.1818181818% { transform: translate(-26px, 0); }
-    27.2727272727% { transform: translate(-26px, 0); }
-    36.3636363636% { transform: translate(0px, 0); }
-    45.4545454545% { transform: translate(0px, 0); }
-    54.5454545455% { transform: translate(0px, 0); }
-    63.6363636364% { transform: translate(0px, 0); }
-    72.7272727273% { transform: translate(0px, 26px); }
-    81.8181818182% { transform: translate(-26px, 26px); }
-    90.9090909091% { transform: translate(-26px, 0px); }
-    100% { transform: translate(0px, 0px); }
-}
+         /* From Uiverse.io by xXJollyHAKERXx */
 
-.banter-loader__box:nth-child(6) { animation: moveBox-6 4s infinite; }
-
-@keyframes moveBox-7 {
-    9.0909090909% { transform: translate(26px, 0); }
-    18.1818181818% { transform: translate(26px, 0); }
-    27.2727272727% { transform: translate(26px, 0); }
-    36.3636363636% { transform: translate(0px, 0); }
-    45.4545454545% { transform: translate(0px, -26px); }
-    54.5454545455% { transform: translate(26px, -26px); }
-    63.6363636364% { transform: translate(0px, -26px); }
-    72.7272727273% { transform: translate(0px, -26px); }
-    81.8181818182% { transform: translate(0px, 0px); }
-    90.9090909091% { transform: translate(26px, 0px); }
-    100% { transform: translate(0px, 0px); }
-}
-
-.banter-loader__box:nth-child(7) { animation: moveBox-7 4s infinite; }
-
-@keyframes moveBox-8 {
-    9.0909090909% { transform: translate(0, 0); }
-    18.1818181818% { transform: translate(-26px, 0); }
-    27.2727272727% { transform: translate(-26px, -26px); }
-    36.3636363636% { transform: translate(0px, -26px); }
-    45.4545454545% { transform: translate(0px, -26px); }
-    54.5454545455% { transform: translate(0px, -26px); }
-    63.6363636364% { transform: translate(0px, -26px); }
-    72.7272727273% { transform: translate(0px, -26px); }
-    81.8181818182% { transform: translate(26px, -26px); }
-    90.9090909091% { transform: translate(26px, 0px); }
-    100% { transform: translate(0px, 0px); }
-}
-
-.banter-loader__box:nth-child(8) { animation: moveBox-8 4s infinite; }
-
-@keyframes moveBox-9 {
-    9.0909090909% { transform: translate(-26px, 0); }
-    18.1818181818% { transform: translate(-26px, 0); }
-    27.2727272727% { transform: translate(0px, 0); }
-    36.3636363636% { transform: translate(-26px, 0); }
-    45.4545454545% { transform: translate(0px, 0); }
-    54.5454545455% { transform: translate(0px, 0); }
-    63.6363636364% { transform: translate(-26px, 0); }
-    72.7272727273% { transform: translate(-26px, 0); }
-    81.8181818182% { transform: translate(-52px, 0); }
-    90.9090909091% { transform: translate(-26px, 0); }
-    100% { transform: translate(0px, 0); }
-}
-
-.banter-loader__box:nth-child(9) { animation: moveBox-9 4s infinite; }
-
-         </style>
+</style>
 </head>
 <body>
 
+    <div class="page-loader">
         <div class="loader">
-            <div class="banter-loader">
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-                <div class="banter-loader__box"></div>
-            </div>
+            <div class="box1"></div>
+            <div class="box2"></div>
+            <div class="box3"></div>
         </div>
+    </div>
 
         <header>
 
@@ -2069,9 +2032,11 @@ header{
             © 2026 Muhammad Rizwan. All Rights Reserved.
         </p>
 
-        <a href="#home" class="top-btn">
-            ↑ Back to Top
-        </a>
+        <button class="button" id="backToTopBtn" aria-label="Back to Top">
+            <svg class="svgIcon" viewBox="0 0 384 512" aria-hidden="true">
+                <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+            </svg>
+        </button> 
 
     </div>
 
@@ -2081,12 +2046,18 @@ header{
 
 // Hide loader on window load
 window.addEventListener('load', function(){
-    var ld = document.querySelector('.loader');
+    var ld = document.querySelector('.page-loader');
     if(ld){
-        ld.classList.add('fade-out');
-        setTimeout(function(){ ld.classList.add('hidden'); }, 1000);
+        ld.classList.add('hidden');
     }
 });
+
+var backToTopBtn = document.getElementById('backToTopBtn');
+if(backToTopBtn){
+    backToTopBtn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 const observer = new IntersectionObserver((entries)=>{
 
