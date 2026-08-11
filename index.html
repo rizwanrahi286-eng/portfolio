@@ -33,7 +33,7 @@
 
         <div class="menu-toggle">
 
-            <i class="fas fa-bars"></i>
+            <i class="fas fa-plus"></i>
 
         </div>
 
@@ -450,10 +450,21 @@
         });
 
         var backToTopBtn = document.getElementById('backToTopBtn');
+        function updateBackToTopBtn() {
+            if (!backToTopBtn) return;
+            if (window.scrollY > 100) {
+                backToTopBtn.classList.remove('hidden');
+            } else {
+                backToTopBtn.classList.add('hidden');
+            }
+        }
+
         if (backToTopBtn) {
             backToTopBtn.addEventListener('click', function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
+            window.addEventListener('scroll', updateBackToTopBtn);
+            updateBackToTopBtn();
         }
 
         const skillsObserver = new IntersectionObserver((entries) => {
@@ -554,9 +565,14 @@
 
         const menuToggle = document.querySelector(".menu-toggle");
         const navbar = document.querySelector(".navbar");
+        const menuIcon = menuToggle.querySelector("i");
 
         menuToggle.addEventListener("click", () => {
-            navbar.classList.toggle("active");
+            const isActive = navbar.classList.toggle("active");
+            if (menuIcon) {
+                menuIcon.classList.toggle("fa-plus", !isActive);
+                menuIcon.classList.toggle("fa-times", isActive);
+            }
         });
 
         // Menu item پر click ہونے کے بعد menu بند ہو جائے
@@ -564,6 +580,10 @@
         document.querySelectorAll(".navbar a").forEach(link => {
             link.addEventListener("click", () => {
                 navbar.classList.remove("active");
+                if (menuIcon) {
+                    menuIcon.classList.add("fa-plus");
+                    menuIcon.classList.remove("fa-times");
+                }
             });
         });
 
