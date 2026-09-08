@@ -1309,9 +1309,9 @@
      font-size: 17px;
  }
 
- .contact-details a{
-    text-decoration: none;
-    color: black;
+ .contact-details a {
+     text-decoration: none;
+     color: black;
  }
 
 
@@ -2135,7 +2135,7 @@
      }
 
      .project-buttons {
-         flex-direction: column;
+         flex-direction: row;
      }
 
      .contact-container {
